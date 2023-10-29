@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-api-deployment-v2
+  namespace: v2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-api
+  template:
+    metadata:
+      labels:
+        app: flask-api
+    spec:
+      containers:
+        - name: flask-api
+          imagePullPolicy: IfNotPresent
+          image: web-app:v2
+          ports:
+            - containerPort: 5000
+          env:
+            - name: VERSION
+              value: v2

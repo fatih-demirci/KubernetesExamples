@@ -1,0 +1,8 @@
+version: '3'
+services:
+  s_flask_api:
+    image: web-app:v1
+    container_name: c_flask_api_v1
+    build: .
+    ports:
+      - "5000:5000"
